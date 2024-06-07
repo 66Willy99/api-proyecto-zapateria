@@ -13,6 +13,10 @@ app.get("/zapatos/:id", getZapatoById)
 
 app.post("/zapatos", addZapato)
 
+app.get(/a/, function(req, res) {
+    res.send('/a/');
+  });
+
 
 app.listen(puerto , ()=> {
     console.log(`Servidor ta bn ${puerto}`);
