@@ -33,7 +33,22 @@ const getZapatoById =  ( req=request, res=response )=> {
         });}
 }
 
+const addZapato =  ( req, res )=> {
+    const newZapato = req.body;
+    zapatoId = req.zapatos.length+1((zapato)=>{
+        return zapato.id === id;
+
+    });
+    zapatos.push(newZapato);
+    return res.json({
+        ok:true,
+        statusCode:200,
+        zapatos
+    });
+}
+
 module.exports = {
     getZapatos,
-    getZapatoById
+    getZapatoById,
+    addZapato
 }
