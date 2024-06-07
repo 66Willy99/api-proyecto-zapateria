@@ -34,23 +34,16 @@ const getZapatoById =  ( req=request, res=response )=> {
 }
 
 const addZapato = (req, res) => {
-    let nombre=String(req.params.nombre);
-    let descripcion=String(req.params.descripcion);
-    let modelo=String(req.params.modelo);
-    let precioReferencial=parseInt(req.params.precioReferencial);
-    let material=String(req.params.material);
-    let suela=String(req.params.suela);
-    let plantilla=String(req.params.plantilla);
     let nuevoZapato = {
         id: zapatos.length + 1, // Generar automáticamente el ID
-        nombre: nombre,
-        descripcion: descripcion,
-        modelo: modelo,
-        precioReferencial: precioReferencial,
+        nombre: String(req.params.nombre),
+        descripcion: String(req.params.descripcion),
+        modelo: String(req.params.modelo),
+        precioReferencial: parseInt(req.params.precioReferencial),
         detalles:{
-            material: material,
-            suela: suela,
-            plantilla: plantilla
+            material: String(req.params.material),
+            suela: String(req.params.suela),
+            plantilla: String(req.params.plantilla)
         } // Ejemplo para generar automáticamente el nombre
     };
     zapatos.push(nuevoZapato); 
