@@ -33,19 +33,29 @@ const getZapatoById =  ( req=request, res=response )=> {
         });}
 }
 
-const addZapato =  ( req, res )=> {
+const addZapato = (req, res) => {
     const newZapato = req.body;
-    zapatoId = req.zapatos.length+1((zapato)=>{
-        return zapato.id === id;
-
-    });
+  
+    // Validar que los datos no estén vacíos
+    if (!newZapato || Object.keys(newZapato).length === 0) {
+      return res.status(400).json({ message: 'Los datos del zapato son requeridos' });
+    }
+  
+    // Generar un nuevo ID basado en el último ID del array zapatos
+    const nuevoId = zapatos.length > 0 ? zapatos[zapatos.length - 1].id + 1 : 1;
+    newZapato.id = nuevoId;
+  
+    // Agregar los nuevos datos al array zapatos
     zapatos.push(newZapato);
-    return res.json({
-        ok:true,
-        statusCode:200,
-        zapatos
+  
+    // Responder con un mensaje de éxito
+    return res.status(201).json({
+      ok: true,
+      statusCode: 201,
+      zapato: newZapato,
+      message: 'Zapato agregado exitosamente'
     });
-}
+  };
 
 module.exports = {
     getZapatos,
