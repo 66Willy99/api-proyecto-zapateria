@@ -33,26 +33,30 @@ const getZapatoById =  ( req=request, res=response )=> {
         });}
 }
 
+
+
 const addZapato = (req, res) => {
     let nuevoZapato = {
-        id: zapatos.length + 1, // Generar automáticamente el ID
-        nombre: String(req.params.nombre),
-        descripcion: String(req.params.descripcion),
-        modelo: String(req.params.modelo),
-        precioReferencial: parseInt(req.params.precioReferencial),
-        detalles:{
-            material: String(req.params.material),
-            suela: String(req.params.suela),
-            plantilla: String(req.params.plantilla)
-        } // Ejemplo para generar automáticamente el nombre
+      id: zapatos.length + 1, // Generar automáticamente el ID
+      nombre: req.body.nombre,  // Acceder a la propiedad "nombre" del JSON
+      descripcion: String(req.body.descripcion),
+      modelo: String(req.body.modelo),
+      precioReferencial: parseInt(req.body.precioReferencial),
+      detalles: { // Agregar dos puntos aquí
+        material: String(req.body.detalles.material),
+        suela: String(req.body.detalles.suela),
+        plantilla: String(req.body.detalles.plantilla), // Agregar coma aquí
+        } // Guardar el nombre del archivo en la propiedad 'imagen' del objeto 'nuevoZapato'
+    }
+      const imagen = req.file;
+        if (imagen) {
+        nuevoZapato.imagen = imagen.filename;
+        }
+        
+    zapatos.push(nuevoZapato);
+    return console.log(req.body);
     };
-    zapatos.push(nuevoZapato); 
-    return res.json({
-        ok:true,
-        statusCode:200,
-        msg:"zapato agregado correctamente"
-    })
-};
+    
 
 module.exports = {
     getZapatos,
