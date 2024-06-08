@@ -4,18 +4,17 @@ const app = express();
 const puerto = 2006;
 
 const { getZapatos , getZapatoById, addZapato } = require("./controllers/zapatos.controller")
+const { getUsuarios} = require("./controllers/usuarios.controller")
 
 app.use(cors());
 
-app.get("/", getZapatos)
+app.get("/api/zapatos", getZapatos)
 
-app.get("/zapatos/:id", getZapatoById)
+app.get("/api/zapatos/:id", getZapatoById)
 
 app.post("/zapatos", addZapato)
 
-app.get(/a/, function(req, res) {
-    res.send('/a/');
-  });
+app.get("/api/usuarios", getUsuarios)
 
 
 app.listen(puerto , ()=> {

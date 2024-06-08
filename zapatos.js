@@ -85,6 +85,7 @@ const zapatos = [
       "nombre": "Zapatos Penny Loafer",
       "descripcion": "Penny loafers de cuero negro con detalle de abertura en la parte delantera y suela de cuero.",
       "modelo": "Tod's Gommino",
+      "img": "D:\workspace\proyecto-zapateria\assets\img\Allen_Edmonds_Park_Avenue.png",
       "precioReferencial": 450,
       "detalles": {
         "material": "Cuero de becerro pulido",
