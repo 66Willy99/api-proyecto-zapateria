@@ -33,6 +33,8 @@ const getZapatoById =  ( req=request, res=response )=> {
         });}
 }
 
+
+
 const addZapato = (req, res) => {
     let nuevoZapato = {
       id: zapatos.length + 1, // Generar automáticamente el ID
@@ -40,15 +42,21 @@ const addZapato = (req, res) => {
       descripcion: String(req.body.descripcion),
       modelo: String(req.body.modelo),
       precioReferencial: parseInt(req.body.precioReferencial),
-      detalles: {
+      detalles: { // Agregar dos puntos aquí
         material: String(req.body.detalles.material),
         suela: String(req.body.detalles.suela),
-        plantilla: String(req.body.detalles.plantilla)
-      }
-    };
-    zapatos.push(nuevoZapato); 
-    return console.log(req.body)
+        plantilla: String(req.body.detalles.plantilla), // Agregar coma aquí
+        } // Guardar el nombre del archivo en la propiedad 'imagen' del objeto 'nuevoZapato'
     }
+      const imagen = req.file;
+        if (imagen) {
+        nuevoZapato.imagen = imagen.filename;
+        }
+        
+    zapatos.push(nuevoZapato);
+    return console.log(req.body);
+    };
+    
 
 module.exports = {
     getZapatos,
