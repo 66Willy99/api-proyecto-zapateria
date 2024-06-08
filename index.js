@@ -7,6 +7,8 @@ const { getZapatos , getZapatoById, addZapato } = require("./controllers/zapatos
 
 app.use(cors());
 
+app.use(express.json());
+
 app.get("/", getZapatos)
 
 app.get("/zapatos/:id", getZapatoById)
