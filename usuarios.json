@@ -1,4 +1,4 @@
-const usuarios = [
+{"usuarios" : [
     {
       "id": 1,
       "email": "user1@domain.com",
@@ -9,7 +9,4 @@ const usuarios = [
         "email": "user2@domain.com",
         "password": "password2"
     }
-]
-module.exports = {
-    usuarios
-}
+]}
