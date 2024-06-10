@@ -2,11 +2,7 @@ const { request, response } = require("express");
 const { zapatos } = require("../zapatos");
 
 const getZapatos =  ( req, res )=> {
-    return res.json({
-        ok:true,
-        statusCode:200,
-        zapatos
-    });
+    return res.json(zapatos);
 }
 
 const getZapatoById =  ( req=request, res=response )=> {
@@ -36,23 +32,11 @@ const getZapatoById =  ( req=request, res=response )=> {
 
 
 const addZapato = (req, res) => {
+    let body= req.body;
     let nuevoZapato = {
       id: zapatos.length + 1, // Generar automáticamente el ID
-      nombre: req.body.nombre,  // Acceder a la propiedad "nombre" del JSON
-      descripcion: String(req.body.descripcion),
-      modelo: String(req.body.modelo),
-      precioReferencial: parseInt(req.body.precioReferencial),
-      detalles: { // Agregar dos puntos aquí
-        material: String(req.body.detalles.material),
-        suela: String(req.body.detalles.suela),
-        plantilla: String(req.body.detalles.plantilla), // Agregar coma aquí
-        } // Guardar el nombre del archivo en la propiedad 'imagen' del objeto 'nuevoZapato'
-    }
-      const imagen = req.file;
-        if (imagen) {
-        nuevoZapato.imagen = imagen.filename;
-        }
-        
+      ...body} // Guardar el nombre del archivo en la propiedad 'imagen' del objeto 'nuevoZapato'
+    
     zapatos.push(nuevoZapato);
     return console.log(req.body);
     };
